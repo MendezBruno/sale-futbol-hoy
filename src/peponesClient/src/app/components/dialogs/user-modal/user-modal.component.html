@@ -46,7 +46,7 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button type="submit" [disabled]="!userForm.form.valid" (click)="model.saveUser()" md-dialog-close>Guardar</button>
+  <button mat-button type="submit" [disabled]="!userForm.form.valid" (click)="model.saveUser(model.user)" md-dialog-close>Guardar</button>
 </div>
 
 <!-- <div fxFlex fxLayout="column">

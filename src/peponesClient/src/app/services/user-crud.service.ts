@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptionsArgs, RequestOptions } from '@angular/http';
 import { Observable , throwError} from 'rxjs';
 import { User } from '../models/user';
 import { map, catchError } from 'rxjs/operators';
@@ -12,14 +12,20 @@ export class UserCrudService {
 
 
   loginURL = 'http://localhost:3000/api/v1/';
-  creacion = 'signup';
+  creacion = 'http://localhost:3000/signup/';
   usuarios = 'users';
 
   constructor(private http: Http) { }
 
   signup(email, password): Observable<User> {
+    let body = new URLSearchParams();
+     body.set('email', email);
+     body.set('password', password);
+     let optionsArgs: RequestOptionsArgs = { withCredentials: true }
+    let options = new RequestOptions(optionsArgs);
+    console.log(this.formatSingup(email, password));
     return this.http
-            .post(this.loginURL + this.creacion, this.formatSingup(email, password))
+            .post(this.creacion, body, options)
             .pipe(
               map( res => res.json()),
               catchError(this.handleError)
@@ -27,9 +33,10 @@ export class UserCrudService {
   }
 
    private formatSingup(email, password) {
-     const body = new URLSearchParams();
+     let body = new URLSearchParams();
      body.set('email', email);
      body.set('password', password);
+     console.log(body);
      return body;
    }
 

@@ -14,18 +14,20 @@ export class AdminUsersComponent implements OnInit {
 
   title = 'Crear o Modificar';
   roles = ['Administrador', 'Jugador'];
-  user = new User();
+  user: User;
   submitted: boolean;
   active = true;
   selectedUser: User;
-  users: User[];
+  users: User[] = [];
   errorMessage: string;
   isCreation: boolean;
   modal: MatDialogRef<UserModalComponent>;
   confirmationDialog: MatDialogRef<ConfirmationDialogComponent>;
   querySearch: String;
 
-  constructor( private userCrudService: UserCrudService , public dialog: MatDialog) { }
+  constructor( private userCrudService: UserCrudService , public dialog: MatDialog) { 
+      this.user = new User();
+  }
 
   ngOnInit() {
   }
@@ -39,9 +41,9 @@ export class AdminUsersComponent implements OnInit {
   }
 
   /* METODOS DEL MODAL */
-  saveUser() {
+  saveUser(user: User) {
     if (this.isCreation) {
-      this.addUser();
+      this.addUser(user);
     } else {
       this.saveChanges(this.user);
     }
@@ -67,11 +69,12 @@ export class AdminUsersComponent implements OnInit {
   }
 
   /* CREACION */
-  addUser(): void {
-    this.userCrudService.addUser(this.user).subscribe(
+  addUser(user): void {
+    this.userCrudService.addUser(user).subscribe(
+                    resUser => console.log(resUser),
                     error => this.errorMessage = <any>error);
 
-    this.users.push(this.user);
+    this.users.push(user);
   }
 
   /* OBTENCION */

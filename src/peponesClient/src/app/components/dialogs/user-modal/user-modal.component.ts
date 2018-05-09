@@ -8,10 +8,11 @@ import { AdminUsersComponent } from '../../admin/admin-users/admin-users.compone
 })
 export class UserModalComponent implements OnInit {
 
-  model: AdminUsersComponent;
-  constructor() { }
+  model = {};
+  constructor() {  }
 
   ngOnInit() {
+    console.log(this.model);
   }
 
   keyDownFunction(event) {

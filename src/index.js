@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const app = express();
 
@@ -15,19 +16,27 @@ const Routes = require('./app/routes/routes');
 const { url } = require('./config/database.js');
 
 mongoose.connect(url);
-Routes.assignRoutes(app);
-require('./config/passport-local')(passport);
+
 
 // settings
 app.set('port', process.env.PORT || 3000);
 
+
 // middlewares
 app.use(morgan('dev'));
+app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+
+// routes
+require('./app/routes/passport-login-local.js')(app, passport);
+require('./config/passport-local')(passport);
+Routes.assignRoutes(app);
+
 
 // app.use(bodyParser.urlencoded({extended: false}));
 // required for passport
@@ -40,8 +49,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-// routes
-require('./app/routes/passport-login-local.js')(app, passport);
+
+
 
 // start the server
 app.listen(app.get('port'), () => {
