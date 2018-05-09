@@ -1,0 +1,62 @@
+<h1 mat-dialog-title>Crear Usuario</h1>
+<div mat-dialog-content color="primary">
+    <form #userForm="ngForm" (keydown)="keyDownFunction($event)">
+        <table  cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="Email" [(ngModel)]="model.user.email" name="email">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="Nombre y Apellido" [(ngModel)]="model.user.datos.name" name="name">
+                    </mat-form-field>
+                </td>
+                <td> 
+                    <mat-form-field>
+                    <mat-select placeholder="Rol" required [(ngModel)]="model.user.datos.role" name="role">
+                        <mat-option *ngFor="let role of model.roles" [value]="role"> {{role}} </mat-option>
+                    </mat-select>
+                    </mat-form-field> 
+                </td> 
+                <td>
+                    <button mat-mini-fab color="primary"><mat-icon>camera_enhance</mat-icon></button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="Usuario" [(ngModel)]="model.user.datos.username" name="username">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput type="password" placeholder="Contraseña" [(ngModel)]="model.user.password" name="password">
+                    </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field>
+                      <input matInput placeholder="edad" [(ngModel)]="model.user.datos.edad" name="edad">
+                  </mat-form-field>
+              </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button type="submit" [disabled]="!userForm.form.valid" (click)="model.saveUser()" md-dialog-close>Guardar</button>
+</div>
+
+<!-- <div fxFlex fxLayout="column">
+    <h1 fxFlex="20" mat-dialog-title>Crear Usuario</h1>
+    <div mat-dialog-content color="primary">
+        <div fxFlex fxLayout="row"  >
+            <input placeholder="Nombre y Apellido" required [(ngModel)]="model.user.name" name="name">
+        </div>
+        <div fxFlex fxLayout="row"  >
+
+        </div>
+    </div>
+</div> -->

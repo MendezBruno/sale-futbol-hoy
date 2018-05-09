@@ -1,0 +1,16 @@
+.example-spacer {    
+    flex: 1 1 auto;
+}
+
+.profilePic{
+   /* border: 1px solid #ddd;*/
+    
+    border-radius: 100%;
+    
+   
+}
+
+.pictureUser {
+    padding-left: 40px;
+    padding-right: 20px;
+}

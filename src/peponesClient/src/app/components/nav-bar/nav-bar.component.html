@@ -1,0 +1,29 @@
+<mat-toolbar color ="primary">
+    <a mat-button routerLink="/inicio" routerLinkActive="active">Futbol Pepones</a>
+
+    <span class="example-spacer"> </span>
+
+    <!-- Iconos funciones laterales izquierdos -->
+    <!-- <mat-icon fxHide fxShow.gt-md class="icon-container" *ngIf="isLoggedIn()"> -->
+    <!-- </mat-icon> -->
+
+    <button  mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>view_headline</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <div>
+        <button mat-menu-item *ngIf="!isAdministrador" routerLink="/admin" routerLinkActive="active">
+          <mat-icon>account_circle</mat-icon>
+          <span >Configuracion</span>
+        </button>
+      </div>
+        <button mat-menu-item disabled>
+          <mat-icon>settings_applications</mat-icon>
+          <span>Editar Perfil</span>
+        </button>
+        <button mat-menu-item *ngIf="isLogIn" routerLink="/login" routerLinkActive="active"> <!-- TODO agregar un componente de salidad saludando -->
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Salir</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>

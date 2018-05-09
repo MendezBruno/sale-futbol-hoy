@@ -1,0 +1,36 @@
+<div fxFlex fxLayoutAlign="center center">
+  <mat-card fxFlex="70" class="main-card">
+    
+    <mat-toolbar class="toolbar"> 
+        <p fxFlex>Usuarios</p>
+        <button type="button" mat-mini-fab (click)="createNewUser()"><mat-icon>add</mat-icon></button>
+    </mat-toolbar>
+    
+    <div class="list">
+      <div *ngFor="let user of users" fxLayoutWrap="column">
+        <mat-card fxFlex="100" fxLayout="row">
+          
+          <div fxFlex="5" fxHide fxShow.gt-md class="icon-container">
+            <mat-icon fxFlex class="profilePic">person</mat-icon>
+          </div>
+
+          <mat-card-content fxFlex="90" fxLayout="column" >
+            <div fxLayout="row">
+              <p class="mat-headline" > {{user.datos.name}} </p>
+              
+              <mat-chip-list class="chip chipsTheme">
+                <mat-chip [color]="getUserColor(user)" selected="true" fxFlex> {{user.datos.role}}</mat-chip>
+              </mat-chip-list>
+
+            </div>
+            <p class="mat-subhead"> {{user.datos.username}} </p>
+          </mat-card-content>
+          <div fxFlex fxLayout="row" >
+            <button type="button" mat-button (click)="editUser(user)" class="button" ><mat-icon>edit</mat-icon></button>
+            <button type="button" mat-button (click)="confirmDelete(user)"  class="button"><mat-icon>delete</mat-icon></button>
+         </div>
+        </mat-card>
+      </div>  
+    </div>
+  </mat-card>
+</div>

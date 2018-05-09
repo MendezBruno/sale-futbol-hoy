@@ -1,0 +1,42 @@
+<!-- <div fxFlex fxLayout="column">
+    <h1 fxFlex="20" fxLayoutAlign="center center" mat-dialog-title>Ingresar</h1>
+    <div mat-dialog-content fxFlex="55" fxLayout="column" >
+        <p class="errorMessage">{{ errorMessage }}</p>
+        <form class="example-form" (keydown)="keyDownFunction($event)">
+            <table class="example-full-width" cellspacing="0"><tr>
+                <td><mat-input-container class="example-full-width">
+                    <input matInput placeholder="Usuario" required [(ngModel)]="model.username" name="username" #username="ngModel">
+                </mat-input-container></td>
+                <td><mat-input-container class="example-full-width">
+                    <input matInput type="password" placeholder="Contraseña" required [(ngModel)]="model.password" name="password" #password="ngModel">
+                </mat-input-container></td>
+            </tr></table>
+        </form>
+    </div>
+    <div fxFlex="20" mat-dialog-actions class="buttons">
+        <button fxFlex="20" fxLayoutAlign="center center" mat-button (click)="login()">Login</button>
+    </div>
+</div> -->
+
+<div fxFlex fxLayout="column" class="dialog-entero">
+    <div fxFlex="20" fxLayout="row" fxLayoutAlign="center center" class="banner-de-titulo">
+        <img id="titleIcon" src="../assets/images/iriss_logo.png">
+        <h1 mat-dialog-title>Iriss Login</h1>
+    </div>
+    <div fxFlex="55" fxLayout="column" (keydown)="keyDownFunction($event)" >
+        <div fxLayoutAlign="space-between center" fxFlex fxLayout="column">
+            <div fxFlex="50" fxLayoutAlign="center center" fxLayout="row" class="separacion">
+                <mat-icon>person</mat-icon>
+                <input placeholder="Usuario" [(ngModel)]="model.username" name="username" #username="ngModel">
+            </div>
+            <div fxFlex="50" fxLayoutAlign="center center" fxLayout="row">
+                <mat-icon>lock</mat-icon>
+                <input type="password" placeholder="Constraseña" [(ngModel)]="model.password" name="password" #password="ngModel">
+            </div>
+        </div>
+    </div>
+    <p class="errorMessage">{{ errorMessage }}</p>
+    <div fxFlex="15" fxLayoutAlign="center center" mat-dialog-actions class="buttons">
+        <button fxFlex="20"  mat-button (click)="login()">Login</button>
+    </div>
+</div>
