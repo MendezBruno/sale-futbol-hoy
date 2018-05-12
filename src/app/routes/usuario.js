@@ -13,7 +13,7 @@ const UserRepository = require('../repositories/user-repository');
  * GET Users.
  */
 Router.get('/', async function (req, res, next) {
-    let User = await UserRepository.getUser();
+    let User = await UserRepository.getUsers();
     res.json(User)
 });
 
@@ -29,7 +29,7 @@ Router.get('/:id', async function (req, res, next) {
 /**
  * PATCH Users.
  */
-Router.patch('/:id', async function (req, res, next) {
+Router.put('/:id', async function (req, res, next) {
     let User = await UserRepository.saveUser(req.params.id, req.body);
     res.json(User)
 });

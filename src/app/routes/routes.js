@@ -11,9 +11,9 @@ const Partido = require('./partido');
  * Assign the routes for the API.
  */
 exports.assignRoutes = function (app) {
-  app.use('api/v1/partido', Partido);
-  app.use('api/v1/jugador', Jugador);
-  app.use('api/v1/user', Usuarios);
+  app.use('/api/v1/partido', Partido);
+  app.use('/api/v1/jugador', Jugador);
+  app.use('/api/v1/user', Usuarios);
 
   // catch 404 and forward to error handler
   app.use(function (req, res, next) {

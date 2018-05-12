@@ -13,7 +13,7 @@ import { UserModalComponent } from '../../dialogs/user-modal/user-modal.componen
 export class AdminUsersComponent implements OnInit {
 
   title = 'Crear o Modificar';
-  roles = ['Administrador', 'Jugador'];
+  roles = ['Administrador', 'Jugador', 'DT'];
   user: User;
   submitted: boolean;
   active = true;
@@ -25,11 +25,12 @@ export class AdminUsersComponent implements OnInit {
   confirmationDialog: MatDialogRef<ConfirmationDialogComponent>;
   querySearch: String;
 
-  constructor( private userCrudService: UserCrudService , public dialog: MatDialog) { 
+  constructor( private userCrudService: UserCrudService , public dialog: MatDialog) {
       this.user = new User();
   }
 
   ngOnInit() {
+    this.getAllUsers();
   }
 
 
@@ -79,7 +80,6 @@ export class AdminUsersComponent implements OnInit {
 
   /* OBTENCION */
   getAllUsers(): void {
-    this.users = [];
     this.userCrudService.getAllUsers().subscribe(
                        users => this.users = users,
                        error =>  this.errorMessage = <any>error);
@@ -93,7 +93,9 @@ export class AdminUsersComponent implements OnInit {
 
   /* ELIMINACION */
   deleteUser(user): void {
-    this.userCrudService.deleteUser(user._id).subscribe(deletedUser => this.getAllUsers(), error =>  this.errorMessage = <any>error);
+    this.userCrudService.deleteUser(user._id).subscribe(
+            deletedUser => this.getAllUsers(),
+            error =>  this.errorMessage = <any>error);
     this.getAllUsers();
   }
 

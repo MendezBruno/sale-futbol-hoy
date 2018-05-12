@@ -24,12 +24,15 @@ exports.getUserByName = async function (name) {
 };
 
 exports.saveUser = async function (id, body) {
-    let User = await User.findById(id).exec();
+    let findUser = await User.findById(id).exec();
+    let datos = JSON.parse(body.datos);
+    findUser["email"] = body["email"];
+    findUser["password"] = body["password"];
 
-    for (let prop in body) {
-        User[prop] = body[prop]
+    for (let prop in datos) {
+        findUser.datos[prop] = datos[prop]
     }
-    return User.save()
+    return findUser.save()
 };
 
 exports.deleteUser = async function (id) {

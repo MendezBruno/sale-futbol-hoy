@@ -46,17 +46,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button type="submit" [disabled]="!userForm.form.valid" (click)="model.saveUser(model.user)" md-dialog-close>Guardar</button>
+  <button mat-button type="submit" [disabled]="!userForm.form.valid" (click)="model.saveUser(model.user)" mat-dialog-close>Guardar</button>
 </div>
-
-<!-- <div fxFlex fxLayout="column">
-    <h1 fxFlex="20" mat-dialog-title>Crear Usuario</h1>
-    <div mat-dialog-content color="primary">
-        <div fxFlex fxLayout="row"  >
-            <input placeholder="Nombre y Apellido" required [(ngModel)]="model.user.name" name="name">
-        </div>
-        <div fxFlex fxLayout="row"  >
-
-        </div>
-    </div>
-</div> -->

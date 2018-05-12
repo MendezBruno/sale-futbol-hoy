@@ -33,9 +33,10 @@ app.use(bodyParser.urlencoded({
 
 
 // routes
+Routes.assignRoutes(app);
 require('./app/routes/passport-login-local.js')(app, passport);
 require('./config/passport-local')(passport);
-Routes.assignRoutes(app);
+
 
 
 // app.use(bodyParser.urlencoded({extended: false}));

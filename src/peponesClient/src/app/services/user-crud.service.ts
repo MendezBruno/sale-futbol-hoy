@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, URLSearchParams, RequestOptionsArgs, RequestOptions } from '@angular/http';
+import { Http, URLSearchParams} from '@angular/http';
 import { Observable , throwError} from 'rxjs';
 import { User } from '../models/user';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, finalize } from 'rxjs/operators';
 
 
 @Injectable({
@@ -11,28 +11,29 @@ import { map, catchError } from 'rxjs/operators';
 export class UserCrudService {
 
 
-  loginURL = 'http://localhost:3000/api/v1/';
+  userUrl = 'http://localhost:3000/api/v1/user/';
   creacion = 'http://localhost:3000/signup/';
   usuarios = 'users';
 
   constructor(private http: Http) { }
 
-  signup(email, password): Observable<User> {
-    console.log(this.formatSingup(email, password));
+  signup(user): Observable<User> {
+    console.log(this.formatSingup(user));
     return this.http
-            .post(this.creacion, this.formatSingup(email, password))
+            .post(this.creacion, this.formatSingup(user))
             .pipe(
               map( res => res.json()),
-              catchError(this.handleError)
+              catchError(this.handleError),
             );
   }
 
-   private formatSingup(email, password) {
-     const body = new URLSearchParams();
-     body.set('email', email);
-     body.set('password', password);
-     console.log(body);
-     return body;
+   private formatSingup(user) {
+    const body = new URLSearchParams();
+    body.set('email', user.email);
+    body.set('password', user.password);
+    body.set('datos', JSON.stringify(user.datos));
+    console.log(body);
+    return body;
    }
 
   private extractData(res: Response) {
@@ -45,25 +46,41 @@ export class UserCrudService {
     return throwError(error.message ? error.message : error.toString());
   }
 
-  modifyUser(arg0: any): any {
-    throw new Error('Method not implemented.');
+  modifyUser(user: User): Observable<User> {
+    return this.http.put(this.userUrl + user._id, this.formatSingup(user))
+                    .pipe(
+                      map( res => res.json()),
+                      catchError(this.handleError)
+    );
+
   }
-  deleteUser(arg0: any): any {
-    throw new Error('Method not implemented.');
+  deleteUser(user: any): any {
+    return this.http.delete(this.userUrl + user._id)
+                    .pipe( catchError(this.handleError) );
   }
-  getUser(arg0: any): any {
-    throw new Error('Method not implemented.');
-  }
-  getAllUsers(): Observable<User[]> {
+  getUser(id: any): Observable<User> {
     return this.http
-            .get(this.loginURL + this.usuarios)
+            .get(this.userUrl + id)
             .pipe(
               map( res => res.json()),
               catchError(this.handleError)
             );
   }
+  getAllUsers(): Observable<User[]> {
+    return this.http
+            .get(this.userUrl)
+            .pipe(
+              map( res => res.json()),
+              catchError(this.handleError)
+            );
+  }
+
   addUser(user: User): Observable<User> {
-    return this.signup(user.email, user.password);
+    return this.signup(user)
+               .pipe(
+                map(res => res),
+                catchError(this.handleError)
+              );
   }
 
 }

@@ -17,6 +17,7 @@ import { ConfirmationDialogComponent } from './components/dialogs/commonDialogs/
 import { UserModalComponent } from './components/dialogs/user-modal/user-modal.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AdminPrincipalComponent } from './components/admin/admin-principal/admin-principal.component';
+import { AdminPartidosComponent } from './components/admin/admin-partidos/admin-partidos.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { AdminPrincipalComponent } from './components/admin/admin-principal/admi
     UserModalComponent,
     NavBarComponent,
     AdminPrincipalComponent,
+    AdminPartidosComponent,
 
   ],
   imports: [
