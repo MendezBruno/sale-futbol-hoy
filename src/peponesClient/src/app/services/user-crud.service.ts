@@ -54,8 +54,9 @@ export class UserCrudService {
     );
 
   }
-  deleteUser(user: any): any {
-    return this.http.delete(this.userUrl + user._id)
+
+  deleteUser(id: string): any {
+    return this.http.delete(this.userUrl + id)
                     .pipe( catchError(this.handleError) );
   }
   getUser(id: any): Observable<User> {
