@@ -4,7 +4,11 @@ const Schema = mongoose.Schema;
 const PartidoSchema = new mongoose.Schema({
     datos_partido: {
         fecha: Date,
-        estadio: String
+        estadio: String,
+        jugadores: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Jugador'
+        }]
     },
     
     datos_equipo_uno: {
@@ -12,7 +16,11 @@ const PartidoSchema = new mongoose.Schema({
         jugador_id: [{
             type: Schema.Types.ObjectId,
             ref: 'Jugador'
-        }]
+        }],
+        dt: {
+            type: Schema.Types.ObjectId,
+            ref: 'Jugador'
+        }
     },
     datos_equipo_dos: {
         goles: String,

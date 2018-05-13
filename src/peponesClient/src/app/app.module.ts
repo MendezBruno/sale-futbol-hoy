@@ -18,6 +18,7 @@ import { UserModalComponent } from './components/dialogs/user-modal/user-modal.c
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AdminPrincipalComponent } from './components/admin/admin-principal/admin-principal.component';
 import { AdminPartidosComponent } from './components/admin/admin-partidos/admin-partidos.component';
+import { AdminJugadorComponent } from './components/admin/admin-jugador/admin-jugador.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { AdminPartidosComponent } from './components/admin/admin-partidos/admin-
     NavBarComponent,
     AdminPrincipalComponent,
     AdminPartidosComponent,
+    AdminJugadorComponent,
 
   ],
   imports: [

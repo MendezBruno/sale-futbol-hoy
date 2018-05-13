@@ -16,6 +16,7 @@ import {
   MatCardModule,
   MatExpansionModule,
   MatTabsModule,
+  MatListModule,
   // Popups and modals
   MatDialogModule,
   // Buttons & Indicators
@@ -39,6 +40,7 @@ import {
     MatCardModule,
     MatExpansionModule,
     MatTabsModule,
+    MatListModule,
     // Popups and modals
     MatDialogModule,
     // Buttons & Indicators
@@ -61,6 +63,7 @@ import {
     MatCardModule,
     MatExpansionModule,
     MatTabsModule,
+    MatListModule,
     // Popups and modals
     MatDialogModule,
     // Buttons & Indicators

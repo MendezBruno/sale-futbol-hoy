@@ -26,21 +26,23 @@ exports.getJugadorByName = async function (name) {
 exports.createJugador = async function (body) {
     return new Jugador({
         user_id: body.user_id,
-        datos_jugador: {
-            posicion: body.posicion,
-            asistencia: body.asistencia,
-            habilidad: body.habilidad
-        },
+        datos_jugador: JSON.parse(req.body.datos_jugador),
+        datos_estadistica: JSON.parse(req.body.datos_estadistica)
     }).save()
 };
 
 exports.saveJugador = async function (id, body) {
-    let jugador = await Jugador.findById(id).exec();
-
-    for (let prop in body) {
-        jugador[prop] = body[prop]
+    let findJugador = await Jugador.findById(id).exec();
+    // TODO mejorar esta asignacion.
+    let datos_jugador= JSON.parse(req.body.datos_jugador);
+    let datos_estadistica = JSON.parse(req.body.datos_estadistica);
+    for (let prop in datos_jugador) {
+        findJugador.datos_jugador[prop] = datos_jugador[prop]
     }
-    return jugador.save()
+    for (let prop in datos_estadistica) {
+        findJugador.datos_estadistica[prop] = datos_estadistica[prop]
+    }
+    return findJugador.save()
 };
 
 exports.deleteJugador = async function (id) {
