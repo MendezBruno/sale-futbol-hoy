@@ -12,7 +12,9 @@ import { JugadorCrudService } from '../../../services/jugador-crud.service';
 })
 export class AdminJugadorComponent implements OnInit {
 
-  userName: string;
+
+  model: any = {};
+  user: User;
   usuarios: User[];
   jugadores: Jugador[];
   jugador: Jugador;
@@ -24,9 +26,8 @@ export class AdminJugadorComponent implements OnInit {
     this.jugadores = [];
     this.infoJugador = false;
     this.jugador = undefined;
-    this.userName = undefined;
     this.userService.getAllUsers().subscribe(
-      users => this.usuarios = users
+      users => {this.usuarios = users; this.user = this.getFirstOrUndefined(this.usuarios); }
     );
     this.jugadorService.getAllJugadores().subscribe(
       jugadores => this.jugadores = jugadores
@@ -44,12 +45,14 @@ export class AdminJugadorComponent implements OnInit {
   }
 
   saveJugador(jugador: Jugador) {
-    this.jugadorService.addJugador(jugador).subscribe(
-      resJugador => this.jugadores.push(resJugador)
-    );
-  //  this.jugadorService.getAllJugadores().subscribe(
-  //    jugadores => this.jugadores = jugadores
-  //  );
+
+    console.log(this.jugador);
+    console.log(jugador);
+
+   // this.jugadorService.addJugador(jugador).subscribe(
+   //   resJugador => this.jugadores.push(resJugador)
+   // );
+
   }
 
   updateJugador(jugador: Jugador) {
@@ -63,11 +66,15 @@ export class AdminJugadorComponent implements OnInit {
 
   selectUser(usuario: User) {
     this.jugador = this.jugadores.find( jugador => jugador.user_id === usuario._id);
-    this.userName = usuario.datos.name.toString();
+    this.user = usuario;
   }
 
   crearJugador() {
     this.jugador = new Jugador();
+  }
+
+  getFirstOrUndefined(lista: any): User {
+    return lista[0] ? lista[0] : undefined;
   }
 
 }

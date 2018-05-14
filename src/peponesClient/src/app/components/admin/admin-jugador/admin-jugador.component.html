@@ -19,17 +19,17 @@
                             
                 <div  fxFlex="100" 
                     class="sec1" 
-                    *ngIf="true">
-                    <div *ngIf="!jugador">
+                    *ngIf="!jugador">
+                    <div >
                             <button mat-button (click)="crearJugador()" > Crear Jugador </button>
                     </div>
                 </div>
                 <div  
                     fxFlex="100" 
                     class="sec2" 
-                    *ngIf="false">
-                    <div *ngIf="jugador">  
-                        <h1> {{userName}} </h1>
+                    *ngIf="jugador">
+                    <div >  
+                        <h1> {{user.datos.name}} </h1>
                         <div class="example-form">
                             <form #jugadorForm="ngForm" (keydown)="keyDownFunction($event)">
                                 <table  cellspacing="0">
@@ -46,7 +46,7 @@
                                         </td>
                                         <td> 
                                             <mat-form-field>
-                                            <mat-select placeholder="Rol" required [(ngModel)]="jugador.datos_jugador.posicion" name="role">
+                                            <mat-select placeholder="Rol" [(ngModel)]="jugador.datos_jugador.posicion" name="role">
                                                 <mat-option *ngFor="let posicion of posiciones" [value]="posicion"> {{posicion}} </mat-option>
                                             </mat-select>
                                             </mat-form-field> 

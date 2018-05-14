@@ -72,10 +72,9 @@ export class AdminUsersComponent implements OnInit {
   /* CREACION */
   addUser(user): void {
     this.userCrudService.addUser(user).subscribe(
-                    resUser => console.log(resUser),
+                    resUser => this.users.push(resUser),
                     error => this.errorMessage = <any>error);
 
-    this.users.push(user);
   }
 
   /* OBTENCION */
@@ -98,7 +97,7 @@ export class AdminUsersComponent implements OnInit {
     this.userCrudService.deleteUser(user._id).subscribe(
             deletedUser => this.getAllUsers(),
             error =>  this.errorMessage = <any>error);
-    this.getAllUsers();
+   // this.getAllUsers();
   }
 
   /* MODIFICACION */
