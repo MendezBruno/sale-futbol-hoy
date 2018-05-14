@@ -8,7 +8,7 @@ const JugadorSchema = new Schema({
      },
 
     datos_jugador: {
-        apodo: string,
+        apodo: String,
         posicion: String,
         habilidad: Number,
         asistencia: String

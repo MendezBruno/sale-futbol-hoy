@@ -14,7 +14,6 @@ const Routes = require('./app/routes/routes');
 
 
 const { url } = require('./config/database.js');
-
 mongoose.connect(url);
 
 
@@ -33,9 +32,12 @@ app.use(bodyParser.urlencoded({
 
 
 // routes
-Routes.assignRoutes(app);
+
+
 require('./app/routes/passport-login-local.js')(app, passport);
 require('./config/passport-local')(passport);
+Routes.assignRoutes(app);
+
 
 
 

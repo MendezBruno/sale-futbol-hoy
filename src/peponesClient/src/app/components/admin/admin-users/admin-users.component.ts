@@ -46,7 +46,7 @@ export class AdminUsersComponent implements OnInit {
     if (this.isCreation) {
       this.addUser(user);
     } else {
-      this.saveChanges(this.user);
+      this.saveChanges(user);
     }
   }
 
@@ -81,7 +81,9 @@ export class AdminUsersComponent implements OnInit {
   /* OBTENCION */
   getAllUsers(): void {
     this.userCrudService.getAllUsers().subscribe(
-                       users => this.users = users,
+                       (users) => {
+                          this.users = users;
+                          console.log(users); },
                        error =>  this.errorMessage = <any>error);
   }
 
@@ -102,7 +104,7 @@ export class AdminUsersComponent implements OnInit {
   /* MODIFICACION */
   saveChanges(user: User): void {
     this.userCrudService.modifyUser(user).subscribe(
-                       (userRes) => { this.selectedUser = userRes; },
+                       (userRes) => { this.user = userRes; },
                       (error) => { this.errorMessage = <any>error; });
   }
 

@@ -9,11 +9,11 @@ import { User } from '../../../models/user';
 })
 export class UserModalComponent implements OnInit {
 
-  model: {user: User};
+  model: any = {};
   constructor() {  }
 
   ngOnInit() {
-    this.model.user = new User();
+  //  this.model.user = new User();
     console.log(this.model);
   }
 
