@@ -12,6 +12,21 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const Routes = require('./app/routes/routes');
 
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+io.on('connection', function(client) {
+    client.on('disconnect', function() {
+    console.log("disconnected")
+    });
+    client.on('room', function(data) {
+        client.join(data.roomId);
+        console.log(' Client joined the room and client id is '+ client.id);
+
+    });
+    client.on('toBackEnd', function(data) {
+               client.in(data.roomId).emit('message', data);
+    })
+});
 
 const { url } = require('./config/database.js');
 mongoose.connect(url);
@@ -19,6 +34,7 @@ mongoose.connect(url);
 
 // settings
 app.set('port', process.env.PORT || 3000);
+app.set('portChat',process.env.PORT || 3001);
 
 
 // middlewares
@@ -57,5 +73,9 @@ app.use(flash());
 
 // start the server
 app.listen(app.get('port'), () => {
-	console.log('server on port ', app.get('port'));
+	console.log('app on port ', app.get('port'));
+});
+
+server.listen(app.get('portChat'), () => {
+	console.log('server on port ', app.get('portChat'));
 });
