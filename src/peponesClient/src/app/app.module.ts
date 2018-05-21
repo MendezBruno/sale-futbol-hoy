@@ -19,6 +19,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AdminPrincipalComponent } from './components/admin/admin-principal/admin-principal.component';
 import { AdminPartidosComponent } from './components/admin/admin-partidos/admin-partidos.component';
 import { AdminJugadorComponent } from './components/admin/admin-jugador/admin-jugador.component';
+import { SocketService } from './services/socket.service';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { AdminJugadorComponent } from './components/admin/admin-jugador/admin-ju
     AdminPrincipalComponent,
     AdminPartidosComponent,
     AdminJugadorComponent,
+
 
   ],
   imports: [

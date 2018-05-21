@@ -14,18 +14,25 @@ const Routes = require('./app/routes/routes');
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-io.on('connection', function(client) {
-    client.on('disconnect', function() {
-    console.log("disconnected")
-    });
-    client.on('room', function(data) {
-        client.join(data.roomId);
-        console.log(' Client joined the room and client id is '+ client.id);
 
+io.on('connection', (socket) => {
+    console.log('user connected');
+
+    socket.on('new_message', (message) => {
+            //socket.emit('new_message',message);
+            io.emit('new_message',message);
+            console.log( 'el mensaje emitido '+message);
+        });
+
+    // socket.on('join-user',(user)=>{
+
+    //  console.log('se unio un usuario'+user);
+
+    // });
+
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
     });
-    client.on('toBackEnd', function(data) {
-               client.in(data.roomId).emit('message', data);
-    })
 });
 
 const { url } = require('./config/database.js');
