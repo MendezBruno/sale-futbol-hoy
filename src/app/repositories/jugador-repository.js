@@ -26,8 +26,8 @@ exports.getJugadorByName = async function (name) {
 exports.createJugador = async function (body) {
     return new Jugador({
         user_id: body.user_id,
-        datos_jugador: JSON.parse(req.body.datos_jugador),
-        datos_estadistica: JSON.parse(req.body.datos_estadistica)
+        datos_jugador: JSON.parse(body.datos_jugador),
+        datos_estadistica: JSON.parse(body.datos_estadistica)
     }).save()
 };
 

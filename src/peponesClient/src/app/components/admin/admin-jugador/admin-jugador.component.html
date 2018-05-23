@@ -41,13 +41,13 @@
                                         </td>
                                         <td>
                                             <mat-form-field>
-                                                <input matInput placeholder="Nombre y Apellido" [(ngModel)]="jugador.datos_jugador.habilidad" name="name">
+                                                <input matInput placeholder="Habilidad" [(ngModel)]="jugador.datos_jugador.habilidad" name="habilidad">
                                             </mat-form-field>
                                         </td>
                                         <td> 
                                             <mat-form-field>
-                                            <mat-select placeholder="Rol" [(ngModel)]="jugador.datos_jugador.posicion" name="role">
-                                                <mat-option *ngFor="let posicion of posiciones" [value]="posicion"> {{posicion}} </mat-option>
+                                            <mat-select placeholder="Posiciones" [(ngModel)]="jugador.datos_jugador.posicion" name="role">
+                                                <mat-option *ngFor="let posicion of keys()" [value]="posicion"> {{posicion}} </mat-option>
                                             </mat-select>
                                             </mat-form-field> 
                                         </td> 

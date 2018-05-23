@@ -18,7 +18,6 @@ export class AdminJugadorComponent implements OnInit {
   usuarios: User[];
   jugadores: Jugador[];
   jugador: Jugador;
-  posiciones: Posicion;
   infoJugador: boolean;
 
   constructor(private userService: UserCrudService, private jugadorService: JugadorCrudService ) {
@@ -33,7 +32,15 @@ export class AdminJugadorComponent implements OnInit {
       jugadores => this.jugadores = jugadores
     );
 
+    
+
   }
+
+  posiciones = Posicion;
+    keys(): Array<string> {
+        const keys = Object.keys(this.posiciones);
+        return keys;
+    }
 
   ngOnInit() {
   }
@@ -49,9 +56,9 @@ export class AdminJugadorComponent implements OnInit {
     console.log(this.jugador);
     console.log(jugador);
 
-   // this.jugadorService.addJugador(jugador).subscribe(
-   //   resJugador => this.jugadores.push(resJugador)
-   // );
+    this.jugadorService.addJugador(jugador).subscribe(
+      resJugador => this.jugadores.push(resJugador)
+   );
 
   }
 
