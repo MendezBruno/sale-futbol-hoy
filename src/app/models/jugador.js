@@ -1,5 +1,6 @@
 const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
+var User = Mongoose.model('User');
 
 const JugadorSchema = new Schema({
     user_id: { 

@@ -29,10 +29,10 @@ export class AdminJugadorComponent implements OnInit {
       users => {this.usuarios = users; this.user = this.getFirstOrUndefined(this.usuarios); }
     );
     this.jugadorService.getAllJugadores().subscribe(
-      jugadores => this.jugadores = jugadores
+      jugadores => {this.jugadores = jugadores; console.log(jugadores); }
     );
 
-    
+
 
   }
 

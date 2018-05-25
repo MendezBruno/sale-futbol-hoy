@@ -9,6 +9,7 @@ import {
   MatFormFieldModule,
   MatCheckboxModule,
   MatSelectModule,
+  MatDatepickerModule,
   // Navigations
   MatToolbarModule,
   MatMenuModule,
@@ -33,6 +34,7 @@ import {
     MatFormFieldModule,
     MatCheckboxModule,
     MatSelectModule,
+    MatDatepickerModule,
     // Navigations
     MatToolbarModule,
     MatMenuModule,
@@ -56,6 +58,7 @@ import {
     MatFormFieldModule,
     MatCheckboxModule,
     MatSelectModule,
+    MatDatepickerModule,
     // Navigations
     MatToolbarModule,
     MatMenuModule,

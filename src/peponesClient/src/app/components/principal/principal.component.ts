@@ -13,23 +13,16 @@ export class PrincipalComponent implements OnInit {
   messages: string[] = [];
   public username;
 
-  constructor(private socketService: SocketService) { }
+  constructor() { }
 
 
   sendMessage() {
 
-    this.username = sessionStorage.getItem('user');
-    this.socketService.sendMessage(this.message);
-    this.message = '';
 
   }
 
   ngOnInit() {
-    this.socketService.getMessages().subscribe(message => {
-    console.log('dasd' + message);
-    this.messages.push(message);
-    // console.log('ChatComponent Initialized '+this.messages+' y los mensajes');
-    });
+
   }
 
 }

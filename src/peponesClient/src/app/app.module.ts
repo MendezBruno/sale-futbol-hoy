@@ -20,6 +20,10 @@ import { AdminPrincipalComponent } from './components/admin/admin-principal/admi
 import { AdminPartidosComponent } from './components/admin/admin-partidos/admin-partidos.component';
 import { AdminJugadorComponent } from './components/admin/admin-jugador/admin-jugador.component';
 import { SocketService } from './services/socket.service';
+import { MatNativeDateModule } from '@angular/material';
+import { SubHeaderOneComponent } from './components/subcomponents/sub-header-one/sub-header-one.component';
+import { ProximoPartidoComponent } from './components/usuario/proximo-partido/proximo-partido.component';
+import { ChatComponent } from './components/usuario/chat/chat.component';
 
 
 @NgModule({
@@ -34,6 +38,9 @@ import { SocketService } from './services/socket.service';
     AdminPrincipalComponent,
     AdminPartidosComponent,
     AdminJugadorComponent,
+    SubHeaderOneComponent,
+    ProximoPartidoComponent,
+    ChatComponent,
 
 
   ],
@@ -41,6 +48,8 @@ import { SocketService } from './services/socket.service';
     BrowserModule,
     MaterialModule,
     MaterialModule,
+    MatNativeDateModule,
+  //  MatMomentDateModule,
     HttpModule,
     JsonpModule,
     FormsModule,
