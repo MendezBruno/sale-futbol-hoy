@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
-import { Http } from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable({

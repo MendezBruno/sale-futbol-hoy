@@ -39,7 +39,7 @@ Router.post('/', async function (req, res, next) {
 /**
  * PATCH Partidos.
  */
-Router.patch('/:id', async function (req, res, next) {
+Router.put('/:id', async function (req, res, next) {
     let Partido = await PartidoRepository.savePartido(req.params.id, req.body);
     res.json(Partido)
 });

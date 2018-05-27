@@ -5,15 +5,19 @@ import { catchError } from 'rxjs/internal/operators/catchError';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { Observable } from 'rxjs';
 import { Jugador } from '../models/jugador';
+import { Partido } from '../models/partidos';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JugadorCrudService {
 
+
   jugadorUrl = 'http://localhost:3000/api/v1/jugador/';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+
+  }
 
   getAllJugadores(): Observable<Jugador[]> {
     return this.http
@@ -48,6 +52,24 @@ export class JugadorCrudService {
                       map( res => res.json()),
                       catchError(this.handleError)
     );
+  }
+
+  getJugador(id: string): Observable<Jugador> {
+    return this.http
+            .get(this.jugadorUrl + id)
+            .pipe(
+              map( res => res.json()),
+              catchError(this.handleError)
+            );
+  }
+
+  getAllPartidos(): Observable<Partido[]> {
+    return this.http
+            .get('http://localhost:3000/api/v1/partido')
+            .pipe(
+              map( res => res.json()),
+              catchError(this.handleError)
+            );
   }
 
   private handleError (error: Response | any) {

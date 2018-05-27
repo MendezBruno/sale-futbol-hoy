@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Http, URLSearchParams } from '@angular/http';
 import { Observable, throwError } from 'rxjs';
 import { Partido } from '../models/partidos';
 import { map, catchError } from 'rxjs/operators';
-import { Http } from '@angular/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,18 @@ export class PartidoCrudService {
 
   partidoUrl = 'http://localhost:3000/api/v1/partido/';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+  }
+
+
+  getAllPartidos(): Observable<Partido[]> {
+    return this.http
+            .get(this.partidoUrl)
+            .pipe(
+              map( res => res.json()),
+              catchError(this.handleError)
+            );
+  }
 
 
   addPartido(partido): Observable<Partido> {
@@ -43,22 +55,14 @@ export class PartidoCrudService {
               catchError(this.handleError)
             );
   }
-  getAllPartidos(): Observable<Partido[]> {
-    return this.http
-            .get(this.partidoUrl)
-            .pipe(
-              map( res => res.json()),
-              catchError(this.handleError)
-            );
-  }
 
 
 
-  private formatPartido(partido) {
+  private formatPartido(partido: Partido) {
     const body = new URLSearchParams();
-    body.set('fecha', partido.fecha);
-    body.set('estadio', partido.estadio);
-    body.set('jugadores', partido.jugadores);
+    body.set('datos_partido', JSON.stringify(partido.datos_partido));
+    body.set('datos_equipo_uno',  JSON.stringify(partido.datos_equipo_uno));
+    body.set('datos_equipo_dos', JSON.stringify(partido.datos_equipo_dos));
     console.log(body);
     return body;
    }

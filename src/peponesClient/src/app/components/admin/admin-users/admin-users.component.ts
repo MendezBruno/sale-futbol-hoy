@@ -30,7 +30,7 @@ export class AdminUsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllUsers();
+   this.getAllUsers();
   }
 
 

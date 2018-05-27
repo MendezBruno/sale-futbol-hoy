@@ -24,6 +24,8 @@ import { MatNativeDateModule } from '@angular/material';
 import { SubHeaderOneComponent } from './components/subcomponents/sub-header-one/sub-header-one.component';
 import { ProximoPartidoComponent } from './components/usuario/proximo-partido/proximo-partido.component';
 import { ChatComponent } from './components/usuario/chat/chat.component';
+import { CanchaComponent } from './components/subcomponents/cancha/cancha.component';
+import { LoginComponent } from './components/usuario/login/login.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { ChatComponent } from './components/usuario/chat/chat.component';
     SubHeaderOneComponent,
     ProximoPartidoComponent,
     ChatComponent,
+    CanchaComponent,
+    LoginComponent,
 
 
   ],

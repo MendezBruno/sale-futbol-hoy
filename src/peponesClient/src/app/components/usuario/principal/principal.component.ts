@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SocketService } from '../../services/socket.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-principal',
@@ -9,19 +7,9 @@ import { Router } from '@angular/router';
 })
 export class PrincipalComponent implements OnInit {
 
-  public data: any = [];
-  message: string;
-  messages: string[] = [];
-  public username;
-
   constructor() { }
 
   ngOnInit() {
-
-  }
-
-  login() {
-
   }
 
 }

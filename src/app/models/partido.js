@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 var Jugador = mongoose.model('Jugador');
+const Schema = mongoose.Schema;
 
 
 const PartidoSchema = new mongoose.Schema({

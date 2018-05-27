@@ -4,6 +4,7 @@ import { Posicion } from '../../../models/posiciones';
 import { User } from '../../../models/user';
 import { UserCrudService } from '../../../services/user-crud.service';
 import { JugadorCrudService } from '../../../services/jugador-crud.service';
+import { PartidoCrudService } from '../../../services/partido-crud.service';
 
 @Component({
   selector: 'app-admin-jugador',
@@ -19,15 +20,19 @@ export class AdminJugadorComponent implements OnInit {
   jugadores: Jugador[];
   jugador: Jugador;
   infoJugador: boolean;
+  batata: any;
 
-  constructor(private userService: UserCrudService, private jugadorService: JugadorCrudService ) {
+  constructor(
+     private userService: UserCrudService,
+     private jugadorService: JugadorCrudService) {
+
     this.usuarios = [];
     this.jugadores = [];
     this.infoJugador = false;
     this.jugador = undefined;
     this.userService.getAllUsers().subscribe(
-      users => {this.usuarios = users; this.user = this.getFirstOrUndefined(this.usuarios); }
-    );
+      users => {this.usuarios = users; this.user = this.getFirstOrUndefined(this.usuarios); });
+
     this.jugadorService.getAllJugadores().subscribe(
       jugadores => {this.jugadores = jugadores; console.log(jugadores); }
     );
