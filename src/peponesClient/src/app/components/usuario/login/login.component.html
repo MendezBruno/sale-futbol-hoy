@@ -1,4 +1,32 @@
 <app-nav-bar></app-nav-bar>
-<p>
-  login works!
-</p>
+
+<div class = "main" fxLayout="row"  >
+  
+  <div fxFlex= "40" > </div>
+  <div fxFlex="30" fxLayout="column" fxLayoutAlign="center center">
+    <h1 fxFlex="40"> Login </h1>
+    <div fxFlex="20" >
+      <mat-icon>lock</mat-icon>
+      <input matInput [(ngModel)]="model.userName" name="userName" placeholder="Username" text="text">
+    </div>
+
+    <div fxFlex="20" >
+      <mat-icon>remove_red_eye</mat-icon>
+      <input matInput [(ngModel)]="model.password" name="password" placeholder="Password" text="password">
+    </div>
+
+    <div fxFlex="20">
+      <button mat-raised-button (click) ="login()" class="login-button"> 
+      <mat-icon>input</mat-icon> Login
+      </button>
+    </div>
+  </div>
+  <div fxFlex= "40" > </div>
+
+</div>
+
+
+               
+     
+
+  
