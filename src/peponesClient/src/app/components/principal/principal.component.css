@@ -3,3 +3,9 @@
     height: 100%;
     width: 100%;
 }
+
+.titulo-principal{
+    text-align: center;
+    font-family: Verdana;
+    background: linear-gradient(green, white);
+}

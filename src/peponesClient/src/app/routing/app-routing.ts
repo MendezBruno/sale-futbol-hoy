@@ -5,6 +5,7 @@ import { AdminUsersComponent } from '../components/admin/admin-users/admin-users
 import { AdminPrincipalComponent } from '../components/admin/admin-principal/admin-principal.component';
 import { AdminGuard } from '../guards/admin.guard';
 import { LoginComponent } from '../components/usuario/login/login.component';
+import { PrincipalUsuarioComponent } from '../components/usuario/principal-usuario/principal-usuario.component';
 
 
 const appRoutes: Routes = [
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
       children: [
         { path: 'users', component: AdminUsersComponent},
       ]},
+    { path: 'user', component: PrincipalUsuarioComponent, canActivate: [ /* logedUser */ ]}
 
 ];
 

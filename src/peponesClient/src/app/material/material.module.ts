@@ -18,6 +18,7 @@ import {
   MatExpansionModule,
   MatTabsModule,
   MatListModule,
+  MatGridListModule,
   // Popups and modals
   MatDialogModule,
   // Buttons & Indicators
@@ -43,6 +44,7 @@ import {
     MatExpansionModule,
     MatTabsModule,
     MatListModule,
+    MatGridListModule,
     // Popups and modals
     MatDialogModule,
     // Buttons & Indicators
@@ -67,6 +69,7 @@ import {
     MatExpansionModule,
     MatTabsModule,
     MatListModule,
+    MatGridListModule,
     // Popups and modals
     MatDialogModule,
     // Buttons & Indicators

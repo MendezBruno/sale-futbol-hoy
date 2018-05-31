@@ -26,6 +26,7 @@ import { ProximoPartidoComponent } from './components/usuario/proximo-partido/pr
 import { ChatComponent } from './components/usuario/chat/chat.component';
 import { CanchaComponent } from './components/subcomponents/cancha/cancha.component';
 import { LoginComponent } from './components/usuario/login/login.component';
+import { PrincipalUsuarioComponent } from './components/usuario/principal-usuario/principal-usuario.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { LoginComponent } from './components/usuario/login/login.component';
     ChatComponent,
     CanchaComponent,
     LoginComponent,
+    PrincipalUsuarioComponent,
 
 
   ],

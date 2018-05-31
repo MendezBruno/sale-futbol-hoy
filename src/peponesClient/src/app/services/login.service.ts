@@ -9,14 +9,14 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class LoginService {
 
-  loginURL = 'http://localhost:3000/api/v1/login';
+  loginURL = 'http://localhost:3000/login';
 
   constructor(private http: Http) { }
 
   login(email, password): Observable<User> {
    return this.http.post(this.loginURL, this.formatLogin(email, password))
                    .pipe(
-                          map( res => res.json()),
+                          map( res => res.json() ),
                           catchError(this.handleError)
                         );
                     // catch(this.handleError);
