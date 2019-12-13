@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
     });
 });
-
+// comentario linea 37
 const { url } = require('./config/database.js');
 mongoose.connect(url);
 
