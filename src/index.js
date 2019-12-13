@@ -15,6 +15,7 @@ const Routes = require('./app/routes/routes');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 // agrego un comentario para esta version
+// comentario linea 18
 io.on('connection', (socket) => {
     console.log('user connected');
 
